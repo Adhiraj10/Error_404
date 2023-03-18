@@ -6,6 +6,14 @@ const productSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
+    threshold :{
+        type : Number , 
+        default : 0
+    },
+    url: {
+        type :String,
+        required:true
+    },
     shop:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Shop",

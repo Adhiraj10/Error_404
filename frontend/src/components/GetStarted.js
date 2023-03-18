@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "../css/Index.css";
 import ProductDetails from "./productDetails";
+import { useLocation , useNavigate } from "react-router";
 const GetStarted = () => {
   const [isCrossed , setisCrossed] = useState(true)
   const toggleCross = ()=>{
     setisCrossed(!isCrossed)
   }
-  
+  const location = useLocation();
+  console.log(location.state);
   return (
 
    
@@ -56,7 +58,7 @@ const GetStarted = () => {
           </div>
         </div>
       </div> 
-    </div> : <ProductDetails toggleCross ={toggleCross}></ProductDetails> }
+    </div> : <ProductDetails state = {location.state} toggleCross ={toggleCross}></ProductDetails> }
     
     
      
