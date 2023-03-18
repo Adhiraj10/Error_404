@@ -6,7 +6,8 @@ import Login from './components/Login';
 
 function App() {
   return (
-    <LandingPage />
+    // <LandingPage />
+    <Login />
   );
 }
 

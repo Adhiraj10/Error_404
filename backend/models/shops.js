@@ -13,7 +13,7 @@ const shopSchema = new mongoose.Schema({
     },
     visitorCount : {
         type:Number,
-        default : 0
+        default :0
     }
 
 },{timestamps:true});
