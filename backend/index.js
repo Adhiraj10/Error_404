@@ -8,6 +8,7 @@ import path from 'path'
 import cors from 'cors'
 import { fileURLToPath } from 'url';
 import productRouter from './routes/products.js';
+import imgRouter from './routes/thresholdImg.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -19,5 +20,5 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO
     .then(() => console.log("CONNECTION SUCCESSFULL"))
     .catch((err) => console.log(err));
 app.use("/public", express.static(path.join(__dirname, "uploads")));
-app.use("/api", [userRouter, shopifyRouter, shopRouter, productRouter]); //SignIn/SignUp Normal Users
+app.use("/api", [userRouter, shopifyRouter, shopRouter, productRouter, imgRouter]); //SignIn/SignUp Normal Users
 app.listen(process.env.PORT || 5000, () => console.log("Listening"));
