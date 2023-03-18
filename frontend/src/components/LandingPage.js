@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Analytic from '../utils/img/Analytics.png'
 // import Analytic2 from '../utils/img/Analytic2.avif'
 import Analytic3 from '../utils/img/Data-transformation.jpg'
-import CodeFrame from "./CodeFrame";
+import { CodeFrame } from "./CodeFrame";
 // import Profile from "./Profile";
 
 const LandingPage = () => {
@@ -46,7 +46,7 @@ const LandingPage = () => {
             <div>
               <span className="font-bold">Shopify</span>
               {/* swiper section  */}
-              
+
               {/* code section */}
               <div>
                 <p className="text-xl font-medium text-gray-800">Copy the following script</p>

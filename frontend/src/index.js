@@ -1,17 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Code from './components/Code.js';
 import App from './App';
 import MainShop from './components/MainShop';
 import ProductDetails from './components/productDetails';
 import LandingPage from './components/LandingPage';
-import CodeFrame from './components/CodeFrame';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
- 
-    <Index></Index>
-  </React.StrictMode>
+    <Code />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
