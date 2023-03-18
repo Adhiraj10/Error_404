@@ -52,7 +52,8 @@
 .profile-description{
     width: 100%;
     height: 60%;
-    background-color: var(--main-color);
+    /* background-color: var(--main-color); */
+    background-color: #8685EF;
     border-radius: 2em;
 
 }
