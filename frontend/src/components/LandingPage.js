@@ -3,8 +3,12 @@ import Navbar from "./Navbar";
 import Analytic from '../utils/img/Analytics.png'
 // import Analytic2 from '../utils/img/Analytic2.avif'
 import Analytic3 from '../utils/img/Data-transformation.jpg'
+<<<<<<< HEAD
 import CodeFrame from "./CodeFrame";
 import StepSlider from "./StepsSlider";
+=======
+import { CodeFrame } from "./CodeFrame";
+>>>>>>> 07b888bd9a46f6ae00dca1c5586026aeb421c2f7
 // import Profile from "./Profile";
 
 const LandingPage = () => {
@@ -52,7 +56,11 @@ const LandingPage = () => {
               </span>{" "}
               </div>
               {/* swiper section  */}
+<<<<<<< HEAD
               <StepSlider />
+=======
+
+>>>>>>> 07b888bd9a46f6ae00dca1c5586026aeb421c2f7
               {/* code section */}
               <div className="mt-10">
                 <p className="text-2xl my-3 font-medium text-gray-800">Copy the following script</p>
