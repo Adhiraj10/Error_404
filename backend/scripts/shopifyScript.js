@@ -12,7 +12,7 @@ const retrieveImg = (count, product) => {
             reader.readAsDataURL(imageBlob);
             reader.onloadend = function () {
                 const base64data = reader.result;
-                if (window.location.href === `https://adhirajkart.myshopify.com/products/${product}`) {
+                if (window.location.href === `https://${domainParts[0]}.myshopify.com/products/${product}`) {
                     const imgElement = document.createElement("img");
                     const parentEle = document.getElementById("ProductInfo-template--18356368474421__main");
                     imgElement.src = base64data;
@@ -24,7 +24,9 @@ const retrieveImg = (count, product) => {
 }
 
 let URL = window.location.href;
-if (URL.startsWith(`https://adhirajkart.myshopify.com/products/`)) {
+const domain = window.location.hostname;
+const domainParts = domain.split('.');
+if (URL.startsWith(`https://${domainParts[0]}.myshopify.com/products/`)) {
     let product = URL.substring(URL.lastIndexOf('/') + 1);
     let LSdata = localStorage.getItem(product);
     if (!LSdata) {
