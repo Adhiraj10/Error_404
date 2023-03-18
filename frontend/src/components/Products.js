@@ -3,14 +3,13 @@ import "../css/product.css"
 import VanillaTilt from 'vanilla-tilt';
 
 
-const Products = ({handleToggle})=>{
+const Products = ({handleToggle })=>{
     
    useEffect(()=>{
     VanillaTilt.init(document.querySelectorAll(".product-div"), {
 		max: 25,
 		speed: 400,
-    
-        
+ 
 	});
    } , [])
     return(<>

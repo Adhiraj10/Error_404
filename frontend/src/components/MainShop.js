@@ -1,7 +1,16 @@
 import React from "react"
+import { useState  , useEffect} from "react";
+import axios from 'axios'
 
-
-const MainShop = ()=>{
+const MainShop = ({userid})=>{
+    const [shops , setShops] = useState([]);
+    const func = async () => {
+          const payload = await axios.post("http://localhost:4000/api/user/shop", {id : userid});
+          setShops(payload.data.allShops);
+        }
+    useEffect(() => {
+        func();
+    },[])
     return(<>
         <div className="main-admin-shop-container">
             <div>
