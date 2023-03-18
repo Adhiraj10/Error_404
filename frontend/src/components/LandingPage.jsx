@@ -46,11 +46,11 @@ const LandingPage = () => {
               <div className="font-bold flex items-center pl-4 mb-8 text-4xl bg-slate-200 rounded-lg shadow-lg h-16">
                 Steps for Shopify
               </div>
-              {/* swiper section  */}
+              
               <div>
                 <StepSlider />
               </div>
-              {/* code section */}
+             
               <div className="mt-10">
                 <p className="text-2xl my-3 font-medium text-gray-800">Copy the following script</p>
                 <CodeFrame />
