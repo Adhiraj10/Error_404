@@ -4,14 +4,13 @@ import { Link } from "react-router-dom";
 import VanillaTilt from 'vanilla-tilt';
 import { useNavigate } from "react-router-dom";
 
-const Products = ({handleToggle})=>{
+const Products = ({handleToggle })=>{
     const navigate = useNavigate();
    useEffect(()=>{
     VanillaTilt.init(document.querySelectorAll(".product-div"), {
 		max: 25,
 		speed: 400,
-    
-        
+ 
 	});
    } , [])
     return(<>

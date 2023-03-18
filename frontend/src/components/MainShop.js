@@ -1,8 +1,17 @@
 import React from "react"
+import { useState  , useEffect} from "react";
+import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 
-
-const MainShop = ({handleShopsClickfalse})=>{
+const MainShop = ({userid,handleShopsClickfalse})=>{
+    const [shops , setShops] = useState([]);
+    const func = async () => {
+          const payload = await axios.post("http://localhost:4000/api/user/shop", {id : userid});
+          setShops(payload.data.allShops);
+        }
+    useEffect(() => {
+        func();
+    },[])
     const navigate = useNavigate();
     return(<>
         <div className="main-shopcontainer-div">
