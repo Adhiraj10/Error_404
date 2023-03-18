@@ -4,6 +4,7 @@ import Analytic from '../utils/img/Analytics.png'
 // import Analytic2 from '../utils/img/Analytic2.avif'
 import Analytic3 from '../utils/img/Data-transformation.jpg'
 import CodeFrame from "./CodeFrame";
+import StepSlider from "./StepsSlider";
 // import Profile from "./Profile";
 
 const LandingPage = () => {
@@ -43,13 +44,18 @@ const LandingPage = () => {
               </span>{" "}
             </p>
 
-            <div>
-              <span className="font-bold">Shopify</span>
+            <div className="mt-10">
+              <div className="font-bold mb-8 text-3xl">
+                Steps for 
+                <span className="font-semibold text-purple-500 underline underline-offset-4 ml-3 decoration-4 decoration-teal-400">
+                  Shopify
+              </span>{" "}
+              </div>
               {/* swiper section  */}
-              
+              <StepSlider />
               {/* code section */}
-              <div>
-                <p className="text-xl font-medium text-gray-800">Copy the following script</p>
+              <div className="mt-10">
+                <p className="text-2xl my-3 font-medium text-gray-800">Copy the following script</p>
                 <CodeFrame />
               </div>
             </div>
