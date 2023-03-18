@@ -1,54 +1,57 @@
-// if (JSON.parse(localStorage.getItem(`${product}`)).threshold) {
-//     fetch(`http://localhost:5000/api/thresholdimg`).then((response) => response.blob())
-//         .then((imageBlob) => {
-//             const imageObjectURL = URL.createObjectURL(imageBlob);
-//             console.log(imageObjectURL);
-//         })
-//         .catch(err => console.log(err))
-// }
-
-// class = product__info-wrapper grid__item
-// id for hp-laptop ProductInfo-template--18356368474421__main MainProduct-template--18356368474421__main
-// id for hp-laptop ProductInfo-template--18356368474421__main MainProduct-template--18356368474421__main
-function obj(unique, product) {
+function obj(unique, product, count) {
     this.unique = unique;
     this.product = product;
+    this.count = count;
+}
+
+const retrieveImg = (count, product) => {
+    fetch(`http://localhost:5000/api/thresholdimg?product=${product}&count=${count}`)
+        .then((response) => response.blob())
+        .then((imageBlob) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(imageBlob);
+            reader.onloadend = function () {
+                const base64data = reader.result;
+                if (window.location.href === `https://${domainParts[0]}.myshopify.com/products/${product}`) {
+                    const imgElement = document.createElement("img");
+                    const parentEle = document.getElementById("ProductInfo-template--18356368474421__main");
+                    imgElement.src = base64data;
+                    parentEle.appendChild(imgElement);
+                }
+            }
+        })
+        .catch(err => console.log(err))
 }
 
 let URL = window.location.href;
-if (URL.startsWith(`https://adhirajkart.myshopify.com/products/`)) {
+const domain = window.location.hostname;
+const domainParts = domain.split('.');
+if (URL.startsWith(`https://${domainParts[0]}.myshopify.com/products/`)) {
     let product = URL.substring(URL.lastIndexOf('/') + 1);
     let LSdata = localStorage.getItem(product);
     if (!LSdata) {
-        let myObj = new obj(true, product);
+        let myObj = new obj(true, product, 0);
         localStorage.setItem(product, JSON.stringify(myObj));
         fetch(`http://localhost:5000/api/shopifyCount?unique=true&product=${product}`).then((response) => response.json())
             .then((serverData) => {
-                console.log(serverData.threshold)
                 if (serverData.threshold) {
                     let { count, product } = serverData;
-                    console.log(count, product);
-                    fetch(`http://localhost:5000/api/thresholdimg?product=${product}&count=${count}`)
-                        .then((response) => response.blob())
-                        .then((imageBlob) => {
-                            const reader = new FileReader();
-                            reader.readAsDataURL(imageBlob);
-                            reader.onloadend = function () {
-                                const base64data = reader.result;
-                                if (window.location.href === `https://adhirajkart.myshopify.com/products/${product}`) {
-                                    const imgElement = document.createElement("img");
-                                    const parentEle = document.getElementById("ProductInfo-template--18356368474421__main");
-                                    imgElement.src = base64data;
-                                    parentEle.appendChild(imgElement);
-                                }
-                            }
-                        })
-                        .catch(err => console.log(err))
+                    let temp = JSON.parse(localStorage.getItem(product));
+                    temp['threshold'] = true;
+                    temp['count'] = count;
+                    localStorage.setItem(product, JSON.stringify(temp));
+                    retrieveImg(count, product);
                 }
             })
             .catch(err => console.log(err))
     }
     else {
-        fetch(`http://localhost:5000/api/shopifyCount?unique=false`).catch(err => console.log(err));
+        let temp = JSON.parse(localStorage.getItem(product));
+        let { threshold } = temp;
+        count = temp.count;
+        product = temp.product;
+        if (threshold) {
+            retrieveImg(count, product);
+        }
     }
 }

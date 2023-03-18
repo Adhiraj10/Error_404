@@ -1,24 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/Index.css";
-
-const GetStarted = ( {handleToggle}) => {
+import ProductDetails from "./productDetails";
+const GetStarted = () => {
+  const [isCrossed , setisCrossed] = useState(true)
+  const toggleCross = ()=>{
+    setisCrossed(!isCrossed)
+  }
+  
   return (
+
+   
+    
     <>
-      <div className="main-shop-container">
-      <div className="cross-btn-div">
-      <div onClick={handleToggle}  >
-      <div className="cross-1"></div>
-        <div className="cross-2"></div>
-      </div>
-        
-      </div>
+    {isCrossed ?<div className="main-getStarted-container">
+    <div className="main-shop-container">
+      
         <div className="shop-heading">
           <p>Add a product</p>
           <h1>On Respective websites</h1>
         </div>
 
         <div className="shop-options-div">
-          <div className="shopify shop">
+          <div onClick={toggleCross} className="shopify shop">
             <div className="shop-img shopify-img"></div>
 
             <h1>Shopify</h1>
@@ -52,7 +55,11 @@ const GetStarted = ( {handleToggle}) => {
             <div className="shop-shadow"></div>
           </div>
         </div>
-      </div>
+      </div> 
+    </div> : <ProductDetails toggleCross ={toggleCross}></ProductDetails> }
+    
+    
+     
     </>
   );
 };
