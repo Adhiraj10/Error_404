@@ -7,7 +7,7 @@ import ShopDetails from "./ShopDetails";
 
 const MainShop = ({userid,handleShopsClickfalse})=>{
     const [shops , setShops] = useState([]);
-    const [isCrossed , setisCrossed] = useState(true)
+    const [isCrossed , setisCrossed] = useState(false)
   const toggleCross = ()=>{
     setisCrossed(!isCrossed)
   }
@@ -20,12 +20,42 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
     },[])
     const navigate = useNavigate();
     return(<>
-    {isCrossed ? <div className="main-shopcontainer-div">
-        <div className="main-admin-shop-container">
+     <div className="main-shopcontainer-div">
+    <div className="main-admin-profile">
+        <div className="profile-pic"></div>
+        <div className="profile-name">Pratham Upadhyay</div>
+        <div className="total-visitor-counts">
+        <div><h1>Visitor Count</h1>
+            <p>Total views</p>
+            <h1>20</h1></div>
             <div>
+            <div className="circle-percentage"><h1>50%</h1></div>
+        </div>
+        </div>
+        
+        <div className="total-shop-counts">
+        <div><h1>Shop Count</h1>
+            <p>Total shops</p>
+            <h1>20</h1></div>
+            <div>
+            <div className="circle-percentage"><h1>50%</h1></div>
+        </div>
+        </div>
+        <div className="total-products-counts">
+        <div><h1>Product Count</h1>
+            <p>Total products</p>
+            <h1>20</h1></div>
+            <div>
+            <div className="circle-percentage"><h1>50%</h1></div>
+        </div>
+        </div>
+    </div>
+        <div className="main-admin-shop-container">
+            <div className="add-shop-heading-div">
               <h1 className="add-shop-heading">
-                Add a <span>Shop</span>{" "}
+                 <span>Shops</span>{" "}
               </h1>
+              <button onClick={toggleCross} className="add-shop-btn-admin"><p>Add Shop</p></button>
             </div>
            
             {
@@ -50,13 +80,13 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
             </div>))
             }
            
-            <button onClick={toggleCross} className="add-shop-btn-admin"><p>Add Shop</p></button>
+            
           </div>
 
         </div>
-      : <>
+        {isCrossed ? <>
         <ShopDetails toggleCross={toggleCross}></ShopDetails>
-      </>}
+      </> : <></>}
         
     </>)
 }
