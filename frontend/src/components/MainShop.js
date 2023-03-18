@@ -1,10 +1,16 @@
 import React from "react"
 import { useState  , useEffect} from "react";
 import axios from 'axios'
+import "../css/admin.css";
 import { Link, useNavigate } from "react-router-dom";
+import ShopDetails from "./ShopDetails";
 
 const MainShop = ({userid,handleShopsClickfalse})=>{
     const [shops , setShops] = useState([]);
+    const [isCrossed , setisCrossed] = useState(true)
+  const toggleCross = ()=>{
+    setisCrossed(!isCrossed)
+  }
     const func = async () => {
           const payload = await axios.post("http://localhost:4000/api/user/shop", {id : userid});
           setShops(payload.data.allShops);
@@ -14,7 +20,7 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
     },[])
     const navigate = useNavigate();
     return(<>
-        <div className="main-shopcontainer-div">
+    {isCrossed ? <div className="main-shopcontainer-div">
         <div className="main-admin-shop-container">
             <div>
               <h1 className="add-shop-heading">
@@ -67,11 +73,14 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
             </div>
           
            
-            <button className="add-shop-btn-admin"><p>Add Shop</p></button>
+            <button onClick={toggleCross} className="add-shop-btn-admin"><p>Add Shop</p></button>
           </div>
 
         </div>
-      
+      : <>
+        <ShopDetails toggleCross={toggleCross}></ShopDetails>
+      </>}
+        
     </>)
 }
 
