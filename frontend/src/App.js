@@ -11,7 +11,7 @@ import Products from './components/Products';
 import GetStarted from './components/GetStarted';
 function App() {
   const [isLoggedIn,setisLoggedIn] = useState(false);
-  const [userid , setuserid] = useState(false)
+  const [userid , setuserid] = useState(JSON.parse(localStorage.getItem("user")).user._id)
   return (
     <> 
     <BrowserRouter>

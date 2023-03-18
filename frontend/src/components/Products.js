@@ -12,6 +12,7 @@ const Products = ({handleToggle })=>{
     const func = async (req,res,next) => {
       console.log(location.state);
       const payload = await axios.get(`http://localhost:4000/api/user/product/${location.state.shopid}`);
+      console.log(payload)
       setProducts(payload.data);
     }
    useEffect(()=>{
@@ -58,7 +59,9 @@ const Products = ({handleToggle })=>{
               <h1 className="add-product-heading">
                 <span>Products</span>{" "}
               </h1>
-              <button onClick={()=>navigate("/selectshop")}  className="add-shop-btn-admin" ><p>Add Product</p></button>
+              <button onClick={()=>navigate("/selectshop" , {state : {
+              curr : location.state,
+            }})}  className="add-shop-btn-admin" ><p>Add Product</p></button>
             </div>
             <div className="user-shops-products">
              
@@ -76,8 +79,8 @@ const Products = ({handleToggle })=>{
             </div>
             
             <button onClick={()=>navigate("/selectshop" , {state : {
-              state : location.state,
-              products : setProducts
+              curr : location.state,
+              
             }})}  className="add-shop-btn-admin" ><p>Add Product</p></button>
            
           </div>
