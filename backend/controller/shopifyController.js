@@ -24,8 +24,4 @@ export const shopifyCount = (req, res, next) => {
             }
         }
     }
-    console.log(products);
-    res.status(200).json({
-        "message": "Product already visited"
-    })
 }
