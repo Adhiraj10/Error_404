@@ -6,6 +6,7 @@ import shopRouter from './routes/shops.js'
 import path from 'path'
 import cors from 'cors'
 import {fileURLToPath} from 'url';
+import productRouter from './routes/products.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -19,4 +20,5 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO
 app.use("/public",express.static(path.join(__dirname , "uploads")));
 app.use("/api",userRouter); //SignIn/SignUp Normal Users
 app.use("/api" , shopRouter)
+app.use("/api",productRouter)
 app.listen(process.env.PORT|| 5000, () => console.log("Listening"));

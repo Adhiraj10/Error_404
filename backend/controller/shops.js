@@ -6,8 +6,9 @@ export const addShop = async (req,res,next) => {
     const {name , id} = req.body;
 
     try{
-        const shopExists = await Shop.find({name});
-        if(shopExists[0]){
+        const shopExists = await Shop.find({shopName : name});
+        console.log(shopExists);
+        if(shopExists.length){
             return res.status(404).json({message:"Shop Already Exists"});
         }
         else{
@@ -24,8 +25,9 @@ export const addShop = async (req,res,next) => {
 
 export const allShops = async(req,res,next) => {
     const {id} = req.body;
+    console.log(id);
      try{
-        const allShops =  await Shop.find({id});
+        const allShops =  await Shop.find({shopOwner : id});
 
         return res.status(200).json({allShops});
      }
