@@ -17,7 +17,7 @@ const LandingPage = () => {
               We are committed to helping you make data-driven decisions about your products, so you can optimize their performance and improve your bottom line. Our platform provides powerful analytics tools that allow you to track key metrics such as sales, revenue, and customer behavior.
             </p>
           </div>
-          <div className="w-1/3 ml-auto">
+          <div className="w-[45%] ml-auto">
             <img src={Analytic} alt="" />
           </div>
         </div>

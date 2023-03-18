@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react"
 import "../css/product.css"
+import { Link } from "react-router-dom";
 import VanillaTilt from 'vanilla-tilt';
-
+import { useNavigate } from "react-router-dom";
 
 const Products = ({handleToggle})=>{
-    
+    const navigate = useNavigate();
    useEffect(()=>{
     VanillaTilt.init(document.querySelectorAll(".product-div"), {
 		max: 25,
@@ -14,7 +15,8 @@ const Products = ({handleToggle})=>{
 	});
    } , [])
     return(<>
-        <div className="main-admin-product-container">
+    <div className="main-productcontainer-div">
+    <div className="main-admin-product-container">
             <div>
               <h1 className="add-product-heading">
                 Add a <span>Product</span>{" "}
@@ -51,9 +53,11 @@ const Products = ({handleToggle})=>{
                 </div>
             </div>
             
-
-            <button className="add-shop-btn-admin" onClick={handleToggle}><p>Add Product</p></button>
+            <button onClick={()=>navigate("/selectshop")}  className="add-shop-btn-admin" ><p>Add Product</p></button>
+           
           </div>
+    </div>
+      
     </>)
 }
 

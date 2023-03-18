@@ -41,7 +41,7 @@
     background-color: #E4E4E4;
 }
 .main-admin-shop-container{
-    width: 80%;
+    width: 100%;
     display: flex;
     gap: 1em;
     align-items: center;
@@ -50,6 +50,12 @@
     height: 100%;
  
 }
+.main-shopcontainer-div{
+    height: 100vh;
+    width: 100%;
+    background-color: #4240a2;
+}
+
 .add-shop-heading{
     font-size: 3em;
     font-weight: 400;
@@ -61,12 +67,12 @@
 .user-shops{
     padding: 1em;
     border-radius: 20px;
-    width: 98%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1em;
-    height: 15%;
+    
     background-color: #E4E4E4;
     transition: transform 0.3s ease;
 }
