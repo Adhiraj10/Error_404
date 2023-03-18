@@ -85,7 +85,7 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
 
         </div>
         {isCrossed ? <>
-        <ShopDetails toggleCross={toggleCross}></ShopDetails>
+        <ShopDetails set = {setShops} userid = {userid} toggleCross={toggleCross}></ShopDetails>
       </> : <></>}
         
     </>)
