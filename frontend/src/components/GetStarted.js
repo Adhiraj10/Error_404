@@ -1,13 +1,20 @@
 import React from "react";
 import "../css/Index.css";
 
-const GetStarted = () => {
+const GetStarted = ( {handleToggle}) => {
   return (
     <>
       <div className="main-shop-container">
+      <div className="cross-btn-div">
+      <div onClick={handleToggle}  >
+      <div className="cross-1"></div>
+        <div className="cross-2"></div>
+      </div>
+        
+      </div>
         <div className="shop-heading">
-          <p>Add a shop</p>
-          <h1>To Get Started </h1>
+          <p>Add a product</p>
+          <h1>On Respective websites</h1>
         </div>
 
         <div className="shop-options-div">
