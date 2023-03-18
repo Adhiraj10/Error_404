@@ -8,10 +8,7 @@ import ProductDetails from './components/productDetails';
 import LandingPage from './components/LandingPage';
 import CodeFrame from './components/CodeFrame';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
- 
-    <App/>
-  </React.StrictMode>
+  <App/>
 );

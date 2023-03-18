@@ -1,14 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Analytic from '../utils/img/Analytics.png'
-// import Analytic2 from '../utils/img/Analytic2.avif'
-import Analytic3 from '../utils/img/Data-transformation.jpg'
-<<<<<<< HEAD
 import CodeFrame from "./CodeFrame";
 import StepSlider from "./StepsSlider";
-=======
-import { CodeFrame } from "./CodeFrame";
->>>>>>> 07b888bd9a46f6ae00dca1c5586026aeb421c2f7
 // import Profile from "./Profile";
 
 const LandingPage = () => {
@@ -49,18 +43,13 @@ const LandingPage = () => {
             </p>
 
             <div className="mt-10">
-              <div className="font-bold mb-8 text-3xl">
-                Steps for 
-                <span className="font-semibold text-purple-500 underline underline-offset-4 ml-3 decoration-4 decoration-teal-400">
-                  Shopify
-              </span>{" "}
+              <div className="font-bold flex items-center pl-4 mb-8 text-4xl bg-slate-200 rounded-lg shadow-lg h-16">
+                Steps for Shopify
               </div>
               {/* swiper section  */}
-<<<<<<< HEAD
-              <StepSlider />
-=======
-
->>>>>>> 07b888bd9a46f6ae00dca1c5586026aeb421c2f7
+              <div>
+                <StepSlider />
+              </div>
               {/* code section */}
               <div className="mt-10">
                 <p className="text-2xl my-3 font-medium text-gray-800">Copy the following script</p>
