@@ -1,3 +1,6 @@
+//The shop owner only needs to include the following code in his website
+//<script src="http://localhost:4000/api/sendScript"></script>
+
 function obj(unique, product, count) {
     this.unique = unique;
     this.product = product;
@@ -5,7 +8,7 @@ function obj(unique, product, count) {
 }
 
 const retrieveImg = (count, product) => {
-    fetch(`http://localhost:5000/api/thresholdimg?product=${product}&count=${count}`)
+    fetch(`http://localhost:4000/api/thresholdimg?product=${product}&count=${count}`)
         .then((response) => response.blob())
         .then((imageBlob) => {
             const reader = new FileReader();
@@ -32,7 +35,7 @@ if (URL.startsWith(`https://${domainParts[0]}.myshopify.com/products/`)) {
     if (!LSdata) {
         let myObj = new obj(true, product, 0);
         localStorage.setItem(product, JSON.stringify(myObj));
-        fetch(`http://localhost:5000/api/shopifyCount?unique=true&product=${product}`).then((response) => response.json())
+        fetch(`http://localhost:4000/api/shopifyCount?unique=true&product=${product}`).then((response) => response.json())
             .then((serverData) => {
                 if (serverData.threshold) {
                     let { count, product } = serverData;
