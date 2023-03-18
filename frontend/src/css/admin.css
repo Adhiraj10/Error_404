@@ -50,12 +50,96 @@
     height: 100%;
  
 }
+.add-shop-heading-div{
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+}
 .main-shopcontainer-div{
     height: 100vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    
     background-color: #4240a2;
 }
+.main-admin-profile{
+    width: 25%;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    border-radius: 2em;
+    gap: 1.4em;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-color);
+    align-items: center;
+}
+.profile-name{
+    font-size: 1.8em;
+}
+.total-visitor-counts{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 1em;
+    background-color: #EFD4BA;
+    box-shadow: 0px 0px 3px 3px rgb(187, 187, 187);
+}
+.total-visitor-counts > div > h1{
+    font-size: 1.6em;
+    font-weight: 600;
 
+}
+.circle-percentage{
+    width: 5em;
+    height: 5em;
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 700;
+    
+    border: 4px rgb(62, 62, 62) solid;
+
+}
+.total-shop-counts{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 1em;
+    background-color: #ABCDAB;
+    box-shadow: 0px 0px 3px 3px rgb(187, 187, 187);
+}
+.total-shop-counts> div > h1{
+    font-size: 1.6em;
+    font-weight: 600;
+
+}
+.total-products-counts> div > h1{
+    font-size: 1.6em;
+    font-weight: 600;
+
+}
+.total-products-counts{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 1em;
+    background-color: #b8dfed;
+    box-shadow: 0px 0px 3px 3px rgb(187, 187, 187);
+}
 .add-shop-heading{
     font-size: 3em;
     font-weight: 400;
@@ -67,7 +151,7 @@
 .user-shops{
     padding: 1em;
     border-radius: 20px;
-    width: 80%;
+    width: 95%;
     display: flex;
     align-items: center;
     justify-content: space-between;
