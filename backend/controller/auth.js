@@ -17,7 +17,7 @@ export const signUpUser = async(req,res,next) => {
         let userExists;
     try{
         userExists = await User.find({email});
-        console.log(userExists);
+       
     }
     catch{
         return res.status(404).json({message:"Somthing Went Wrong"});
