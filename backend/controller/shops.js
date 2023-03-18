@@ -1,13 +1,14 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import Shop from '../models/shops.js';
-
+import Product from "../models/products.js"
 export const addShop = async (req,res,next) => {
     const {name , id} = req.body;
 
     try{
-        const shopExists = await Shop.find({name});
-        if(shopExists[0]){
+        const shopExists = await Shop.find({shopName : name});
+        console.log(shopExists);
+        if(shopExists.length){
             return res.status(404).json({message:"Shop Already Exists"});
         }
         else{
@@ -24,8 +25,9 @@ export const addShop = async (req,res,next) => {
 
 export const allShops = async(req,res,next) => {
     const {id} = req.body;
+    console.log(id);
      try{
-        const allShops =  await Shop.find({id});
+        const allShops =  await Shop.find({shopOwner : id});
 
         return res.status(200).json({allShops});
      }
@@ -35,3 +37,15 @@ export const allShops = async(req,res,next) => {
 }
 
 
+export const deleteShop = async(req,res,next) => {
+    const id  = req.params.shopId
+    
+     try{
+        await Shop.findOneAndDelete({_id : id});
+        await Product.deleteMany({shop : id});
+        return res.status(200).json({message:"Shop Removed"});
+     }
+     catch{
+        return res.status(404).json({message:"Something Went Wrong"});
+     }
+}
