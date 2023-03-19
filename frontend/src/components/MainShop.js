@@ -64,6 +64,7 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
                 <div className="shop-icon"></div>
                 <div className="shop-name">{shop.shopName}</div>
               </div>
+              <div className="shop-description-edit">
               <div className="shop-info">
                 <div className="visitor-count">
                   <div className="visitor-icon"></div>
@@ -77,6 +78,12 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
                   <div className="count-circle">20</div>
                 </div>
               </div>
+              <div className="vertical-line"></div>
+              <div className="delete-shop-div">
+                <div className="delete-btn"></div>
+              </div>
+              </div>
+              
             </div>))
             }
            
