@@ -4,10 +4,16 @@ import axios from 'axios'
 import "../css/admin.css";
 import { Link, useNavigate } from "react-router-dom";
 import ShopDetails from "./ShopDetails";
+import Profile from "./Profile";
 
-const MainShop = ({userid,handleShopsClickfalse})=>{
+const MainShop = ({setuserid, userid,handleShopsClickfalse})=>{
     const [shops , setShops] = useState([]);
     const [isCrossed , setisCrossed] = useState(false)
+    const navigate = useNavigate();
+    if(!userid){
+       setuserid(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).user._id : "")
+    }
+    if(!userid) navigate("/login");
   const toggleCross = ()=>{
     setisCrossed(!isCrossed)
   }
@@ -46,38 +52,9 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
         alert("Something Went Wrong PLease Try Again");
       }
     }
-    const navigate = useNavigate();
     return(<>
      <div className="main-shopcontainer-div">
-    <div className="main-admin-profile">
-        <div className="profile-pic"></div>
-        <div className="profile-name">Pratham Upadhyay</div>
-        <div className="total-visitor-counts">
-        <div><h1>Visitor Count</h1>
-            <p>Total views</p>
-            <h1>20</h1></div>
-            <div>
-            <div className="circle-percentage"><h1>50%</h1></div>
-        </div>
-        </div>
-        
-        <div className="total-shop-counts">
-        <div><h1>Shop Count</h1>
-            <p>Total shops</p>
-            <h1>20</h1></div>
-            <div>
-            <div className="circle-percentage"><h1>50%</h1></div>
-        </div>
-        </div>
-        <div className="total-products-counts">
-        <div><h1>Product Count</h1>
-            <p>Total products</p>
-            <h1>20</h1></div>
-            <div>
-            <div className="circle-percentage"><h1>50%</h1></div>
-        </div>
-        </div>
-    </div>
+    <Profile></Profile>
         <div className="main-admin-shop-container">
             <div className="add-shop-heading-div">
               <h1 className="add-shop-heading">
@@ -87,7 +64,10 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
             </div>
            
             {
-              shops && shops.length > 0 && shops.map((shop) => (<div onClick={()=>navigate("/products" , {state : {shopid : shop._id , visitor : shop.visitorCount}})} className="user-shops">
+              shops && shops.length > 0 && shops.map((shop) => (<div onClick={()=>{
+                localStorage.setItem("shopid" , shop._id);
+                navigate("/products" , {state : {shopid : shop._id , visitor : shop.visitorCount}})
+              }} className="user-shops">
               <div className="user-shop-div">
                 <div className="shop-icon"></div>
                 <div className="shop-name">{shop.shopName}</div>
