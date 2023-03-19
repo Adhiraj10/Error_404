@@ -17,7 +17,8 @@ const retrieveImg = (count, product) => {
                 const base64data = reader.result;
                 if (window.location.href === `https://${domainParts[0]}.myshopify.com/products/${product}`) {
                     const imgElement = document.createElement("img");
-                    const parentEle = document.getElementById("ProductInfo-template--18356368474421__main");
+                    const parentEle = document.getElementsByClassName("product-form")[0];
+                    imgElement.style.marginTop = "25px";
                     imgElement.src = base64data;
                     parentEle.appendChild(imgElement);
                 }
