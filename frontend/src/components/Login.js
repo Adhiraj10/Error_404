@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import { Navigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Login = ({isLoggedIn,setisLoggedIn,setuserid}) => {
     const [email , setEmail] = useState("");
     const [password, setPassword] = useState("")
+    
+    
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,7 +46,7 @@ const Login = ({isLoggedIn,setisLoggedIn,setuserid}) => {
 
                                 <button type="submit" className="w-full text-white bg-teal-400 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</button>
                                 <p className="text-base font-normal text-gray-800 dark:text-gray-400">
-                                    Don’t have an account yet? <a href="register" className="font-medium text-lg text-teal-500 hover:underline dark:text-primary-500">Sign Up</a>
+                                    Don’t have an account yet? <Link to = "/register" className="font-medium text-lg text-teal-500 hover:underline dark:text-primary-500">Sign Up</Link>
                                 </p>
                             </form>
                         </div>

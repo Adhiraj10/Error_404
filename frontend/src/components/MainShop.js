@@ -12,12 +12,40 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
     setisCrossed(!isCrossed)
   }
     const func = async () => {
-          const payload = await axios.post("http://localhost:4000/api/user/shop", {id : userid});
-          setShops(payload.data.allShops);
-        }
+          const payload = await axios.post("http://localhost:4000/api/user/shop/", {id : userid});
+          const all = payload.data.allShops;
+
+          let newAll = [];
+          for(let i = 0 ; i < all.length ; i++){
+            const {data} = await axios.get(
+              `http://localhost:4000/api/user/product/${all[i]._id}`
+            );
+
+              console.log(data);
+              let visitorC = 0;
+              for(let j = 0 ; j < data.length ; j++){
+                visitorC  = parseInt(visitorC) + parseInt(data[j].shopifyCount);
+              }
+              let newObj = {...all[i] , visitorCount : visitorC}
+              newAll = [...newAll , newObj]
+          }
+          setShops([...newAll]);
+          
+    }
     useEffect(() => {
         func();
+       
     },[])
+    const handleDelete = async (id) => {
+      try{
+        await axios.delete(`http://localhost:4000/api/user/shop/${id}`)
+        const del = shops.filter((shop) => shop._id !== id)
+        setShops([...del])
+      }
+      catch(err){
+        alert("Something Went Wrong PLease Try Again");
+      }
+    }
     const navigate = useNavigate();
     return(<>
      <div className="main-shopcontainer-div">
@@ -59,7 +87,7 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
             </div>
            
             {
-              shops.length > 0 && shops.map((shop) => (<div onClick={()=>navigate("/products" , {state : {shopid : shop._id , visitor : shop.visitorCount}})} className="user-shops">
+              shops && shops.length > 0 && shops.map((shop) => (<div onClick={()=>navigate("/products" , {state : {shopid : shop._id , visitor : shop.visitorCount}})} className="user-shops">
               <div className="user-shop-div">
                 <div className="shop-icon"></div>
                 <div className="shop-name">{shop.shopName}</div>
@@ -80,7 +108,10 @@ const MainShop = ({userid,handleShopsClickfalse})=>{
               </div>
               <div className="vertical-line"></div>
               <div className="delete-shop-div">
-                <div className="delete-btn"></div>
+                <div onClick = {(e) =>{
+                  e.stopPropagation();
+                   handleDelete(shop._id)
+                }}className="delete-btn"></div>
               </div>
               </div>
               

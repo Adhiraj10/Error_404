@@ -59,6 +59,7 @@
     height: auto;
     width: 100%;
     display: flex;
+    min-height: 100vh;
     justify-content: center;
     
     background-color: #4240a2;
