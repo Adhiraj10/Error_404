@@ -45,14 +45,12 @@ const Products = ({ handleToggle }) => {
           parseInt(product.magentoCount) +
           parseInt(product.wordPressCount),
       };
-      console.log(product.productName);
       setData((prev) => {
-        if(product.length !== data.length){
+        if(product.length !== prev.length){
           return [...prev, obj]
         }
-        else return prev;
+        else return [obj];
       });
-      console.log(obj);
     });
   }, [products]);
   useEffect(() => {
@@ -62,7 +60,18 @@ const Products = ({ handleToggle }) => {
     });
     func();
   }, []);
-
+  const handleDelete = async (id , visitor) => {
+    
+    try{
+      console.log(visitor, "Visitors");
+      await axios.delete(`http://localhost:4000/api/user/product/${id}`)
+      const del = products.filter((product) => product._id !== id)
+      setProducts([...del])
+    }
+    catch(err){
+      alert("Something Went Wrong PLease Try Again");
+    }
+  }
   return (
     <>
       <div className="main-productcontainer-div">
@@ -173,7 +182,7 @@ const Products = ({ handleToggle }) => {
             </button>
           </div>
           <div className="user-shops-products">
-            {products.length > 0 &&
+            {products && products.length > 0 &&
               products.map((product) => (
                 <div className="product-div">
                   <div className="product-img-1 product-img"></div>
@@ -190,7 +199,12 @@ const Products = ({ handleToggle }) => {
                     </div>
 
                     <div className="delete-shop-div">
-                      <div className="delete-btn"></div>
+                      <div onClick = {(e) =>{
+                  e.stopPropagation();
+                   handleDelete(product._id , parseInt(product.shopifyCount) +
+                   parseInt(product.magentoCount) +
+                   parseInt(product.wordPressCount))
+                }}className="delete-btn"></div>
                     </div>
                   </div>
                 </div>

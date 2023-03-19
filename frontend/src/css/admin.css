@@ -60,6 +60,7 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
+    min-height: 100vh;
     justify-content: center;
     background-image: linear-gradient(to right top, #6e1dbd, #661cc9, #591cd5, #471ee1, #2521ee);
 }
