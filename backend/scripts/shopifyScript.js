@@ -17,7 +17,8 @@ const retrieveImg = (count, product) => {
                 const base64data = reader.result;
                 if (window.location.href === `https://${domainParts[0]}.myshopify.com/products/${product}`) {
                     const imgElement = document.createElement("img");
-                    const parentEle = document.getElementById("ProductInfo-template--18356368474421__main");
+                    const parentEle = document.getElementsByClassName("product-form")[0];
+                    imgElement.style.marginTop = "25px";
                     imgElement.src = base64data;
                     parentEle.appendChild(imgElement);
                 }
@@ -37,12 +38,12 @@ if (URL.startsWith(`https://${domainParts[0]}.myshopify.com/products/`)) {
         localStorage.setItem(product, JSON.stringify(myObj));
         fetch(`http://localhost:4000/api/shopifyCount?unique=true&product=${product}`).then((response) => response.json())
             .then((serverData) => {
+                let { count, product, threshold } = serverData;
+                let temp = JSON.parse(localStorage.getItem(product));
+                temp['threshold'] = threshold;
+                temp['count'] = count;
+                localStorage.setItem(product, JSON.stringify(temp));
                 if (serverData.threshold) {
-                    let { count, product } = serverData;
-                    let temp = JSON.parse(localStorage.getItem(product));
-                    temp['threshold'] = true;
-                    temp['count'] = count;
-                    localStorage.setItem(product, JSON.stringify(temp));
                     retrieveImg(count, product);
                 }
             })
