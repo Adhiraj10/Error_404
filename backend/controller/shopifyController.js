@@ -10,7 +10,6 @@ export const shopifyCount = async (req, res, next) => {
         await prod.save();
         if (prod.shopifyCount >= prod.threshold) {
             res.status(200).json({
-                message: "Unique Visitor",
                 count: prod.shopifyCount,
                 threshold: true,
                 product: prod.productName
@@ -18,7 +17,6 @@ export const shopifyCount = async (req, res, next) => {
         }
         else {
             res.status(200).json({
-                message: "Unique Visitor",
                 count: prod.shopifyCount,
                 threshold: false,
                 product: prod.productName
