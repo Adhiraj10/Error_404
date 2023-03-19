@@ -9,7 +9,7 @@ const ProductDetails = ({toggleCross ,state} ) => {
     const [threshold , setThreshold] = useState("");
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
-        
+
         e.preventDefault();
         try{
             const payload = await axios.post(`http://localhost:4000/api/user/product/${state.curr.shopid}/add` , {name , url , threshold : parseInt(threshold)})
