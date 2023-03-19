@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/Index.css";
 import ProductDetails from "./productDetails";
+import user from '../utils/img/user.png';
 import { useLocation , useNavigate } from "react-router";
 const GetStarted = () => {
   const [isCrossed , setisCrossed] = useState(false)
@@ -9,14 +10,13 @@ const GetStarted = () => {
   }
   const location = useLocation();
   console.log(location);
-  return (
-
-   
-    
+  return ( 
     <>
    <div className="main-getStarted-container">
     <div className="main-admin-profile">
-        <div className="profile-pic"></div>
+        <div className="profile-pic">
+         
+        </div>
         <div className="profile-name">Pratham Upadhyay</div>
         <div className="total-visitor-counts">
         <div><h1>Visitor Count</h1>

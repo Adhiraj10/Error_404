@@ -58,10 +58,10 @@
 .main-shopcontainer-div{
     height: auto;
     width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    
-    background-color: #4240a2;
+    background-image: linear-gradient(to right top, #6e1dbd, #661cc9, #591cd5, #471ee1, #2521ee);
 }
 .main-admin-profile{
     width: 25%;
@@ -226,8 +226,12 @@
 .profile-pic{
     width: 200px;
     height: 200px;
-    border-radius: 10em;
+    border-radius: 50%;
     background-color: #7FD1AE;
+    background-image: url("../utils/img/user.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 .shop-option{
     width: 100%;
