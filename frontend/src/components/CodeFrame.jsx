@@ -1,8 +1,8 @@
-import { CodeBlock, dracula } from "react-code-blocks";
+import { CopyBlock, dracula } from "react-code-blocks";
 
 const CodeFrame = () => {
     return (
-        <CodeBlock
+        <CopyBlock
             text={'<script src="http://localhost:4000/api/sendScript"></script>'}
             language='javascript'
             showLineNumbers={false}

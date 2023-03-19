@@ -11,6 +11,10 @@ import GetStarted from './components/GetStarted';
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
   const [userid, setuserid] = useState(false)
+
+  // useEffect(()=>{
+  //   setisLoggedIn(localStorage.getItem('isLogin'))
+  // })
   return (
     <>
       <BrowserRouter>
@@ -18,8 +22,7 @@ function App() {
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} setuserid={setuserid} />}></Route>
           <Route path="/register" element={<Signup isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} setuserid={setuserid} />}></Route>
-          <Route path="/shop" element={<MainShop isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} userid={userid} />}></Route>
-
+          <Route path="/shop" element={ <MainShop isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} userid={userid} /> }></Route>
 
           <Route path='/products' element={<Products />}></Route>
           <Route path='/selectshop' element={<GetStarted />}></Route>
