@@ -1,27 +1,29 @@
-let products = [["hp-laptop", parseInt(0)], ["hp-laptop-1", parseInt(0)]];
-const thresholdVal = 1;
+import Product from '../models/products.js';
 
-export const shopifyCount = (req, res, next) => {
+export const shopifyCount = async (req, res, next) => {
     let { unique, product } = req.query;
     unique = JSON.parse(unique);
     // console.log(unique, product)
     if (unique) {
-        for (let i = 0; i < products.length; i++) {
-            if (products[i][0] == product) {
-                products[i][1]++;
-                if (products[i][1] >= thresholdVal) {
-                    res.status(200).json({
-                        count: products[i][1],
-                        threshold: true,
-                        product: products[i][0]
-                    })
-                }
-                console.log(products);
-                res.status(200).json({
-                    "message": "Unique Visitor"
-                });
-                return;
-            }
+        let prod = await Product.findOne({ productName: product });
+        prod.shopifyCount++;
+        await prod.save();
+        if (prod.shopifyCount >= prod.threshold) {
+            res.status(200).json({
+                message: "Unique Visitor",
+                count: prod.shopifyCount,
+                threshold: true,
+                product: prod.productName
+            });
         }
+        else {
+            res.status(200).json({
+                message: "Unique Visitor",
+                count: prod.shopifyCount,
+                threshold: false,
+                product: prod.productName
+            });
+        }
+        return;
     }
 }
