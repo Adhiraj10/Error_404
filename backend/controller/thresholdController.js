@@ -6,9 +6,9 @@ export const imageController = (req, res, next) => {
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'red';
     ctx.fillRect(0, 0, 400, 200);
-    ctx.font = '18px Arial';
+    ctx.font = '16px Arial';
     ctx.fillStyle = 'white';
-    ctx.fillText(`Views: ${count}`, 135, 30);
+    ctx.fillText(`${count} people have viewed this product recently!`, 20, 30);
 
     // Send the image back to the client as a response
     res.set('Content-Type', 'image/png');
