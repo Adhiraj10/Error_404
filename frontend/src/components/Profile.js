@@ -1,13 +1,17 @@
 import React from "react";
 import "../css/Index.css";
 import user from '../utils/img/user.png'
-
+import { useNavigate } from "react-router";
 const Profile = ()=>{
+    const navigate = useNavigate();
+    if(!localStorage.getItem("user")){
+        navigate("/login")
+    }
     return(
         <>
         <div className="main-admin-profile">
         <div className="profile-pic"></div>
-        <div className="profile-name">Pratham Upadhyay</div>
+        <div className="profile-name">{JSON.parse(localStorage.getItem("user")).user.firstName +" "+ JSON.parse(localStorage.getItem("user")).user.lastName}</div>
         <div className="total-visitor-counts">
         <div><h1>Visitor Count</h1>
             <p>Total views</p>
