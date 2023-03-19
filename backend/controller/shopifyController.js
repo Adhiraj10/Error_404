@@ -8,6 +8,7 @@ export const shopifyCount = async (req, res, next) => {
         let prod = await Product.findOne({ productName: product });
         prod.shopifyCount++;
         await prod.save();
+        console.log(prod)
         if (prod.shopifyCount >= prod.threshold) {
             res.status(200).json({
                 count: prod.shopifyCount,
@@ -22,6 +23,13 @@ export const shopifyCount = async (req, res, next) => {
                 product: prod.productName
             });
         }
-        return;
+    }
+    else {
+        let prod = await Product.findOne({ productName: product });
+        res.status(200).json({
+            count: prod.shopifyCount,
+            threshold: true,
+            product: prod.productName
+        })
     }
 }

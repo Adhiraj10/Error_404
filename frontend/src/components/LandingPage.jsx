@@ -10,7 +10,7 @@ import Wordpress from '../utils/img/wordpress.png'
 import Magento from '../utils/img/magento.png'
 import { Link } from "react-router-dom";
 
-import {MdContentCopy} from 'react-icons/md'
+import { MdContentCopy } from 'react-icons/md'
 import Footer from "./footer";
 
 const LandingPage = () => {
@@ -28,7 +28,7 @@ const LandingPage = () => {
               </p>
               <p className="max-w-3xl pt-4 px-1 mt-8 text-gray-500 text-2xl">
                 We are committed to helping you make data-driven decisions about your products, so you can optimize their performance and improve your bottom line.
-                Our platform will analyze your products and provide you number of unique visiters for every product.
+                Our platform will analyze your products and provide you number of unique visitors for every product.
               </p>
 
               <div className="max-w-xl mt-10">
@@ -78,7 +78,7 @@ const LandingPage = () => {
               </div>
 
               <div className="mt-20 mb-16">
-                <div className="text-3xl my-8 flex flex-row items-center font-medium text-gray-900"><MdContentCopy className="mr-2"/>Copy the following script</div>
+                <div className="text-3xl my-8 flex flex-row items-center font-medium text-gray-900"><MdContentCopy className="mr-2" />Copy the following script</div>
                 <CodeFrame />
               </div>
             </div>
