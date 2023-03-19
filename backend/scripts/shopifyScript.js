@@ -50,12 +50,17 @@ if (URL.startsWith(`https://${domainParts[0]}.myshopify.com/products/`)) {
             .catch(err => console.log(err))
     }
     else {
-        let temp = JSON.parse(localStorage.getItem(product));
-        let { threshold } = temp;
-        count = temp.count;
-        product = temp.product;
-        if (threshold) {
-            retrieveImg(count, product);
-        }
+        fetch(`http://localhost:4000/api/shopifyCount?unique=false&product=${product}`).then((response) => response.json())
+            .then((serverData) => {
+                let { count, product, threshold } = serverData;
+                let temp = JSON.parse(localStorage.getItem(product));
+                temp['threshold'] = threshold;
+                temp['count'] = count;
+                localStorage.setItem(product, JSON.stringify(temp));
+                if (serverData.threshold) {
+                    retrieveImg(count, product);
+                }
+            })
+            .catch(err => console.log(err))
     }
 }

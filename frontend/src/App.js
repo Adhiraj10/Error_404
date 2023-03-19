@@ -9,8 +9,8 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Products from './components/Products';
 import GetStarted from './components/GetStarted';
 function App() {
-  const [isLoggedIn,setisLoggedIn] = useState(false);
-  const [userid , setuserid] = useState(JSON.parse(localStorage.getItem("user")).user._id)
+  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [userid, setuserid] = useState(localStorage.getItem("user") ? (JSON.parse(localStorage.getItem("user"))).user._id : "")
 
   return (
     <>
@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} setuserid={setuserid} />}></Route>
           <Route path="/register" element={<Signup isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} setuserid={setuserid} />}></Route>
-          <Route path="/shop" element={ <MainShop isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} userid={userid} /> }></Route>
+          <Route path="/shop" element={<MainShop isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} userid={userid} />}></Route>
 
           <Route path='/products' element={<Products />}></Route>
           <Route path='/selectshop' element={<GetStarted />}></Route>
