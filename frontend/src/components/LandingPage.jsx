@@ -18,7 +18,7 @@ const LandingPage = () => {
                   KuchhToHai
                 </span>{" "}
               </p>
-              <p className="max-w-3xl pt-4 px-1 text-gray-800 text-2xl">
+              <p className="max-w-3xl pt-4 px-1 mt-4 text-gray-800 text-2xl">
                 We are committed to helping you make data-driven decisions about your products, so you can optimize their performance and improve your bottom line.
                 Our platform will analyze your products and provide you number of unique visiters for every product.
               </p>

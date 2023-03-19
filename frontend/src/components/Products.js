@@ -12,6 +12,7 @@ const Products = ({handleToggle })=>{
     const func = async (req,res,next) => {
       console.log(location.state);
       const payload = await axios.get(`http://localhost:4000/api/user/product/${location.state.shopid}`);
+      console.log(payload)
       setProducts(payload.data);
     }
    useEffect(()=>{
@@ -54,31 +55,45 @@ const Products = ({handleToggle })=>{
         </div>
     </div>
     <div className="main-admin-product-container">
+            <div className="graph-heading-div">
+              <h1>Graphs</h1>
+            </div>
+            <div className="graphs-div">
+              <div className="graphs"></div>
+              <div className="graphs"></div>
+              <div className="graphs"></div>
+            </div>
             <div className="add-product-heading-div">
               <h1 className="add-product-heading">
                 <span>Products</span>{" "}
               </h1>
-              <button onClick={()=>navigate("/selectshop")}  className="add-shop-btn-admin" ><p>Add Product</p></button>
+              <button onClick={()=>navigate("/selectshop" , {state : {
+              curr : location.state,
+            }})}  className="add-shop-btn-admin" ><p>Add Product</p></button>
             </div>
             <div className="user-shops-products">
              
                 {products.length> 0 && products.map((product) => (<div className="product-div">
                     <div className="product-img-1 product-img"></div>
                     <div className="product-details">
-                        <h1  className="product-name">{product.productName}</h1>
-                        <p></p>
-                        <p>{parseInt(product.shopifyCount) + parseInt(product.magentoCount) + parseInt(product.wordPressCount)}</p>
+                    <div>
+                    <h1  className="product-name">{product.productName}</h1>
+                        
+                        <p>Visitors {parseInt(product.shopifyCount) + parseInt(product.magentoCount) + parseInt(product.wordPressCount)}</p>
                     </div>
+                       
+                        <div className="delete-shop-div">
+                <div className="delete-btn"></div>
+              </div>
+                    </div>
+
                 </div>)
                  
                 ) }
                 
             </div>
             
-            <button onClick={()=>navigate("/selectshop" , {state : {
-              state : location.state,
-              products : setProducts
-            }})}  className="add-shop-btn-admin" ><p>Add Product</p></button>
+            
            
           </div>
     </div>

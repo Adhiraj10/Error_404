@@ -326,3 +326,41 @@
     font-weight: 500;
 
 }
+
+
+.vertical-line{
+    height: 100px;
+    width: 1px;
+    content: "";
+    background-color: black;
+}
+.delete-btn{
+    background-image: url("../utils/img/delete.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 2em;
+    height: 2em;
+    transition: transform 0.3s ease;
+}
+.delete-btn:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.shop-description-edit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+
+/* graph */
+
+.graph-heading-div{
+    display: flex;
+    width: 100%;
+}
+.graph-heading-div > h1{
+    font-size: 2em;
+    
+}
